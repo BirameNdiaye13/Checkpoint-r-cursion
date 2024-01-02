@@ -1,0 +1,43 @@
+program PalindromeTest;
+
+function EstPalindrome(mot: string): boolean;
+var
+  i, j: integer;
+begin
+  // Initialisation des indices de début et de fin
+  i := 1;
+  j := Length(mot);
+
+  // Tant que l'indice de début est inférieur à l'indice de fin
+  while i < j do
+  begin
+    // Si les caractères aux extrémités ne sont pas égaux, le mot n'est pas un palindrome
+    if mot[i] <> mot[j] then
+    begin
+      EstPalindrome := false;
+      Exit; // Arrêt du traitement
+    end;
+
+    // Passage aux caractères suivants
+    Inc(i);
+    Dec(j);
+  end;
+
+  // Si on a parcouru tout le mot sans trouver de différence, c'est un palindrome
+  EstPalindrome := true;
+end;
+
+var
+  mot: string;
+
+begin
+  // Demande à l'utilisateur d'entrer un mot
+  Write('Entrez un mot : ');
+  ReadLn(mot);
+
+  // Appel de la fonction EstPalindrome et affichage du résultat
+  if EstPalindrome(mot) then
+    WriteLn('Le mot "', mot, '" est un palindrome.')
+  else
+    WriteLn('Le mot "', mot, '" n\'est pas un palindrome.');
+end.
